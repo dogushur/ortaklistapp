@@ -18,11 +18,26 @@ class TextFieldBulletinPage: FeedbackPageBLTNItem {
     @objc public var textField: UITextField!
 
     @objc public var textInputHandler: ((BLTNActionItem, String?) -> Void)? = nil
-
+    
     override func makeViewsUnderDescription(with interfaceBuilder: BLTNInterfaceBuilder) -> [UIView]? {
-        textField = interfaceBuilder.makeTextField(placeholder: "First and Last Name", returnKey: .done, delegate: self)
+        textField = interfaceBuilder.makeTextField(returnKey: .done, delegate: self)
+        textField.backgroundColor = UIColor.clear
+        textField.borderStyle = .none
+        
+        let inputplaceholder = [
+            NSAttributedString.Key.foregroundColor: UIColor("#555"),
+            //NSAttributedString.Key.font : UIFont(name: "Ubuntu-Medium", size: 25)!
+        ]
+        
+        textField.attributedPlaceholder = NSAttributedString(string: "Liste Başlığı", attributes:inputplaceholder)
+        textField.keyboardType = .default
+        textField.keyboardAppearance = .dark
+        textField.textColor = UIColor("#555")
+        textField.font = UIFont.systemFont(ofSize: 25)
+        
         return [textField]
     }
+    
 
     override func tearDown() {
         super.tearDown()
@@ -33,13 +48,13 @@ class TextFieldBulletinPage: FeedbackPageBLTNItem {
         textField.resignFirstResponder()
         super.actionButtonTapped(sender: sender)
     }
-
+    
 }
 
 // MARK: - UITextFieldDelegate
 
 extension TextFieldBulletinPage: UITextFieldDelegate {
-
+    
     @objc open func isInputValid(text: String?) -> Bool {
 
         if text == nil || text!.isEmpty {
@@ -64,9 +79,9 @@ extension TextFieldBulletinPage: UITextFieldDelegate {
         if isInputValid(text: textField.text) {
             textInputHandler?(self, textField.text)
         } else {
-            descriptionLabel!.textColor = .red
+            /*descriptionLabel!.textColor = .red
             descriptionLabel!.text = "You must enter some text to continue."
-            textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+            textField.backgroundColor = UIColor.red.withAlphaComponent(0.3)*/
         }
 
     }

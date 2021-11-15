@@ -10,7 +10,7 @@ import BLTNBoard
 import UITextView_Placeholder
 import M13Checkbox
 
-class GorevEkleBirController: UIViewController, UITextViewDelegate {
+class GorevDuzenleBirController: UIViewController, UITextViewDelegate {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -25,9 +25,11 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
     let hud = JGProgressHUD(style: .extraLight)
     
     var uyebilgisijson = JSON()
+    var gorevdetayjson = JSON()
     
     var secilenlisteid = String()
     var secilenlistebaslik = String()
+    var secilengorevid = String()
     
     var aktif_sira = 1
     
@@ -42,7 +44,7 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goreveklesetup()
+        gorevduzenlesetup()
         
     }
     
@@ -55,13 +57,13 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
     var ustyazi = UILabel()
     var bildirimbtn = UIButton(type: .custom)
     
-    var gorevekleview = UIView()
+    var gorevduzenleview = UIView()
     var gorevaciklamatext = UITextView()
     
     var gerigitbtn = UIButton()
     var ilerigitbtn = UIButton()
     
-    func goreveklesetup(){
+    func gorevduzenlesetup(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
@@ -84,8 +86,8 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
             ustyazi = UILabel(frame: CGRect(x:geribtn.frame.width,y:0,width:ustbaricgenel.frame.width - geribtn.frame.width*2,height:ustbaricgenel.frame.height))
             bildirimbtn = UIButton(frame: CGRect(x:ustbaricgenel.frame.width-30,y:10,width:30,height: 30))
             
-            gorevekleview = UIView(frame: CGRect(x:0,y:ustbar.frame.height,width: screenWidth,height:screenHeight-ustbar.frame.height))
-            gorevaciklamatext = UITextView(frame: CGRect(x:15,y:0,width: gorevekleview.frame.width-30,height:gorevekleview.frame.height))
+            gorevduzenleview = UIView(frame: CGRect(x:0,y:ustbar.frame.height,width: screenWidth,height:screenHeight-ustbar.frame.height))
+            gorevaciklamatext = UITextView(frame: CGRect(x:15,y:0,width: gorevduzenleview.frame.width-30,height:gorevduzenleview.frame.height))
             
             gerigitbtn = UIButton(frame: CGRect(x:25,y:screenHeight - 110,width:60,height:60))
             ilerigitbtn = UIButton(frame: CGRect(x:screenWidth - 85,y:screenHeight - 110,width:60,height:60))
@@ -119,7 +121,7 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
         geribtn.tintColor = UIColor("#cccccc")
         ustbaricgenel.addSubview(geribtn)
         
-        ustyazi.text = "Görev Oluştur"
+        ustyazi.text = "Görevi Düzenle"
         ustyazi.textColor = UIColor("#cccccc")
         ustyazi.textAlignment = .center
         ustyazi.backgroundColor = UIColor.clear
@@ -135,17 +137,11 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
         
         //
         
-        gorevekleview.backgroundColor = UIColor.clear
-        gorevekleview.layer.zPosition = 9999
-        view.addSubview(gorevekleview)
-        view.bringSubviewToFront(gorevekleview)
+        gorevduzenleview.backgroundColor = UIColor.clear
+        gorevduzenleview.layer.zPosition = 9999
+        view.addSubview(gorevduzenleview)
+        view.bringSubviewToFront(gorevduzenleview)
         
-        let twplaceholder = [
-            NSAttributedString.Key.foregroundColor: UIColor("#ccc"),
-            NSAttributedString.Key.font : UIFont(name: "Ubuntu-Medium", size: 20)!
-        ]
-        
-        gorevaciklamatext.attributedPlaceholder = NSAttributedString(string: "Bu alanı düzenleyebilirsiniz,\n\nBaşlamak için dokunabilirsiniz.", attributes:twplaceholder)
         gorevaciklamatext.textColor = UIColor("#ccc")
         gorevaciklamatext.backgroundColor = UIColor("#222222")
         gorevaciklamatext.delegate = self
@@ -154,7 +150,7 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
         gorevaciklamatext.font = UIFont(name: "Ubuntu-Medium", size: 20)
         gorevaciklamatext.showsVerticalScrollIndicator = false
         gorevaciklamatext.showsHorizontalScrollIndicator = false
-        gorevekleview.addSubview(gorevaciklamatext)
+        gorevduzenleview.addSubview(gorevaciklamatext)
         
         //
         
@@ -185,7 +181,34 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
         hud.layer.zPosition = 9999
         
         uyebilgisicek()
+        gorevdetaycek()
         
+    }
+    
+    func gorevdetaycek(){
+        let parameters: Parameters = [
+            "gorevid": "\(secilengorevid)"
+        ]
+        Alamofire.request(serviceurl + "gorev_detay.php", method: .post, parameters: parameters).responseJSON { response in
+            if let value = response.result.value {
+                self.gorevdetayjson = JSON(value)
+                print("gorevdetayjson  qnq: \(self.gorevdetayjson)")
+                
+                let detay = "\(self.gorevdetayjson["detay"].stringValue)"
+                
+                if(detay.count >= 1){
+                    self.gorevaciklamatext.text = "\(detay)"
+                }else{
+                    let twplaceholder = [
+                        NSAttributedString.Key.foregroundColor: UIColor("#ccc"),
+                        NSAttributedString.Key.font : UIFont(name: "Ubuntu-Medium", size: 20)!
+                    ]
+                    
+                    self.gorevaciklamatext.attributedPlaceholder = NSAttributedString(string: "Bu alanı düzenleyebilirsiniz,\n\nBaşlamak için dokunabilirsiniz.", attributes:twplaceholder)
+                }
+                
+            }
+        }
     }
     
     deinit {
@@ -199,7 +222,7 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
                 let screenWidth = screenSize.width
                 let screenHeight = screenSize.height
                 
-                self.gorevaciklamatext.frame = CGRect(x:15,y:0,width: self.gorevekleview.frame.width-30,height:255)
+                self.gorevaciklamatext.frame = CGRect(x:15,y:0,width: self.gorevduzenleview.frame.width-30,height:255)
                 
                 self.view.layoutIfNeeded()
             })
@@ -213,7 +236,7 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
                 let screenWidth = screenSize.width
                 let screenHeight = screenSize.height
                 
-                self.gorevaciklamatext.frame = CGRect(x:15,y:0,width: self.gorevekleview.frame.width-30,height:self.gorevekleview.frame.height)
+                self.gorevaciklamatext.frame = CGRect(x:15,y:0,width: self.gorevduzenleview.frame.width-30,height:self.gorevduzenleview.frame.height)
                 
                 self.view.layoutIfNeeded()
             })
@@ -227,7 +250,6 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
     var gorevdata_aciklama = String()
     var gorevdata_baslangic = String()
     var gorevdata_bitis = String()
-    var gorevdata_kisiler = [String]()
     
     //baslangicpage
     var baslangicpage = DatePickerBLTNItem()
@@ -237,13 +259,17 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
         baslangicpage = DatePickerBLTNItem(title: "Başlangıç Tarihi")
         
         baslangicpage.descriptionText = ""
-        baslangicpage.actionButtonTitle = "Tamamla"
+        baslangicpage.actionButtonTitle = "Devam Et"
         
         baslangicpage.actionHandler = { (item: BLTNActionItem) in
             self.baslangicbulletinyes()
         }
         
         baslangicpage.isDismissable = false
+        
+        let bastarih = "\(self.gorevdetayjson["bastarih"].stringValue)"
+        
+        baslangicpage.datePicker.setDate(from: "\(bastarih)", format: "dd/MM/yyyy HH:mm")
         
         let bullpage: BLTNItem = baslangicpage
         return BLTNItemManager(rootItem: bullpage)
@@ -280,13 +306,17 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
         bitispage = DatePickerBLTNItem(title: "Bitiş Tarihi")
         
         bitispage.descriptionText = ""
-        bitispage.actionButtonTitle = "Tamamla"
+        bitispage.actionButtonTitle = "Devam Et"
         
         bitispage.actionHandler = { (item: BLTNActionItem) in
             self.bitisbulletinyes()
         }
         
         bitispage.isDismissable = false
+        
+        let sontarih = "\(self.gorevdetayjson["sontarih"].stringValue)"
+        
+        bitispage.datePicker.setDate(from: "\(sontarih)", format: "dd/MM/yyyy HH:mm")
         
         let bullpage: BLTNItem = bitispage
         return BLTNItemManager(rootItem: bullpage)
@@ -315,13 +345,14 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
     //bitispage
     
     func step2ac(){
-        let sayfagecis = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gorevEkleIkiVC") as! GorevEkleIkiController
+        let sayfagecis = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gorevDuzenleIkiVC") as! GorevDuzenleIkiController
         sayfagecis.secilenlisteid = secilenlisteid
         sayfagecis.secilenlistebaslik = secilenlistebaslik
         
         sayfagecis.gorevdataaciklama = gorevdata_aciklama
         sayfagecis.gorevdatabaslangic = gorevdata_baslangic
         sayfagecis.gorevdatabitis = gorevdata_bitis
+        sayfagecis.secilengorevid = secilengorevid
         self.present(sayfagecis, animated: false, completion: nil)
     }
     
@@ -385,5 +416,18 @@ class GorevEkleBirController: UIViewController, UITextViewDelegate {
         print("bildirimlere git")
     }
     
+}
+
+extension UIDatePicker {
+    func setDate(from string: String, format: String, animated: Bool = true) {
+        
+        let formater = DateFormatter()
+        
+        formater.dateFormat = format
+        
+        let date = formater.date(from: string) ?? Date()
+        
+        setDate(date, animated: animated)
+    }
 }
 

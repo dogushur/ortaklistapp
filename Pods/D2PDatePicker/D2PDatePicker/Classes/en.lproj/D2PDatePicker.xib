@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,7 +37,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2h-gq-dy2">
-                                    <rect key="frame" x="8" y="18" width="15" height="15"/>
+                                    <rect key="frame" x="8" y="17.5" width="15" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="YBO-YQ-UbQ"/>
                                         <constraint firstAttribute="width" constant="15" id="ncC-lb-qgz"/>
@@ -55,13 +55,13 @@
                                     <state key="normal" image="next"/>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EX4-ri-KIo" customClass="MonthView" customModule="D2PDatePicker" customModuleProvider="target">
-                                    <rect key="frame" x="38" y="10" width="74.5" height="30"/>
+                                    <rect key="frame" x="38" y="10" width="74" height="30"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyG-MF-MTF">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZP-wj-FSt">
-                                                    <rect key="frame" x="0.5" y="0.0" width="74" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -114,7 +114,7 @@
                             <rect key="frame" x="0.0" y="10" width="150" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgd-aB-d0c" customClass="YearView" customModule="D2PDatePicker" customModuleProvider="target">
-                                    <rect key="frame" x="53" y="14.5" width="45" height="21"/>
+                                    <rect key="frame" x="52.5" y="14.5" width="45" height="21"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwZ-gL-5GZ">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="21"/>
@@ -148,7 +148,7 @@
                                     </connections>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qo6-W2-0qv">
-                                    <rect key="frame" x="15" y="17" width="15" height="15"/>
+                                    <rect key="frame" x="15" y="17.5" width="15" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="15" id="ckO-rn-kw1"/>
                                         <constraint firstAttribute="height" constant="15" id="ioA-Qt-cFG"/>
@@ -157,7 +157,7 @@
                                     <state key="normal" image="back"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C98-QN-dkH">
-                                    <rect key="frame" x="120" y="17" width="15" height="15"/>
+                                    <rect key="frame" x="120" y="17.5" width="15" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="b4o-Xg-rak"/>
                                         <constraint firstAttribute="width" constant="15" id="iDK-rD-vhK"/>
@@ -278,7 +278,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-45" y="220"/>
+            <point key="canvasLocation" x="-46.399999999999999" y="219.49025487256372"/>
         </view>
     </objects>
     <resources>

@@ -244,6 +244,7 @@ class BaslangicController: UIViewController, UITableViewDelegate, UITableViewDat
         bulletinManager.backgroundColor = UIColor("#ccc")
         bulletinManager.backgroundViewStyle = .blurredLight
         //bulletinManager.statusBarAppearance = .hidden
+        
         bulletinManager.showBulletin(above: self)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -460,7 +461,9 @@ class BaslangicController: UIViewController, UITableViewDelegate, UITableViewDat
     func listeduzenlefunc(s: Int){
         let listeid = self.listelerjson[s - 2]["listeid"].stringValue
         
-        print(listeid)
+        let sayfagecis = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "listeDuzenleVC") as! ListeDuzenleController
+        sayfagecis.secilenlisteid = listeid
+        self.present(sayfagecis, animated: false, completion: nil)
     }
     
     func listedencik(s: Int){
@@ -491,7 +494,6 @@ class BaslangicController: UIViewController, UITableViewDelegate, UITableViewDat
         sayfagecis.secilenlisteid = secilenliste
         sayfagecis.secilenlistebaslik = secilenlistebaslik
         self.present(sayfagecis, animated: false, completion: nil)
-        
     }
     
     @objc func profilegitfunc(sender:UIButton!){

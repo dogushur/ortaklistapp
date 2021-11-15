@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="322" y="-2"/>
+        </scene>
+        <!--Baslangic Controller-->
+        <scene sceneID="4mt-HM-h9b">
+            <objects>
+                <viewController storyboardIdentifier="baslangicVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hPV-fo-AJc" customClass="BaslangicController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="44n-8f-zmg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="97w-zB-G22"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSt-8i-NfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="321" y="761"/>
+        </scene>
+        <!--Gorevler Controller-->
+        <scene sceneID="bQz-V3-7Ae">
+            <objects>
+                <viewController storyboardIdentifier="gorevlerVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ReZ-3v-Few" customClass="GorevlerController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8rZ-QT-acX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PM3-5U-abi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NGu-RL-UPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="761"/>
+        </scene>
+        <!--Gorev Mesajlar Controller-->
+        <scene sceneID="Qd9-Du-QN6">
+            <objects>
+                <viewController storyboardIdentifier="gorevmesajVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4hB-P4-ihZ" customClass="GorevMesajlarController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3za-UG-6bt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BMV-X6-ca6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jwr-xx-jhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1841" y="761"/>
+        </scene>
+        <!--Gorev Ekle Bir Controller-->
+        <scene sceneID="05I-BD-g8s">
+            <objects>
+                <viewController storyboardIdentifier="gorevEkleBirVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xpq-o4-sgz" customClass="GorevEkleBirController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vkr-7S-Ega">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NaJ-iY-sSc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iax-qU-0Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="321" y="1503"/>
+        </scene>
+        <!--Gorev Duzenle Bir Controller-->
+        <scene sceneID="Tlc-hM-Shi">
+            <objects>
+                <viewController storyboardIdentifier="gorevDuzenleBirVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T10-nv-ZOC" customClass="GorevDuzenleBirController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hZC-yq-ekU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Qsh-Ol-BFJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="smj-eg-SS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="321" y="2238"/>
+        </scene>
+        <!--Liste Duzenle Controller-->
+        <scene sceneID="gt3-F3-iCY">
+            <objects>
+                <viewController storyboardIdentifier="listeDuzenleVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UHy-vc-8jc" customClass="ListeDuzenleController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bUs-Cy-wQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ydh-Hd-MjN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wE7-qK-Gkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="321" y="2959"/>
+        </scene>
+        <!--Gorev Duzenle Iki Controller-->
+        <scene sceneID="yco-Iw-Atb">
+            <objects>
+                <viewController storyboardIdentifier="gorevDuzenleIkiVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gFW-kf-RCB" customClass="GorevDuzenleIkiController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NNi-2H-v9u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cv8-na-vY5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rOh-Wg-FyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="2238"/>
+        </scene>
+        <!--Gorev Ekle Iki Controller-->
+        <scene sceneID="EGy-MQ-w7y">
+            <objects>
+                <viewController storyboardIdentifier="gorevEkleIkiVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y1x-fu-bmk" customClass="GorevEkleIkiController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3qH-tY-P4B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="oIr-XG-3eI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MB2-TQ-7nW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="1503"/>
+        </scene>
+        <!--Board Controller-->
+        <scene sceneID="WTz-Y3-Ic4">
+            <objects>
+                <viewController storyboardIdentifier="boardVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tox-28-sb3" customClass="BoardController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ir-ee-fg0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hSH-6D-X7i"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yph-2d-jVc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oaJ-bS-KCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="-2"/>
+        </scene>
+        <!--Home Controller-->
+        <scene sceneID="WwT-v0-NmE">
+            <objects>
+                <viewController storyboardIdentifier="homeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DXc-Qx-vkw" customClass="HomeController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JaC-bF-2hZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="78M-eK-QSs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1w-40-zqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1841" y="-2"/>
+        </scene>
+        <!--Kayit Ol Controller-->
+        <scene sceneID="Eob-x5-gaX">
+            <objects>
+                <viewController storyboardIdentifier="kayitolVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m5X-8J-klj" customClass="KayitOlController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zS4-5p-H84">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Y08-BL-bTo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64w-ny-k28" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628" y="-2"/>
+        </scene>
+        <!--Giris Yap Controller-->
+        <scene sceneID="rn6-dR-7kH">
+            <objects>
+                <viewController storyboardIdentifier="girisyapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8vO-RN-zvy" customClass="GirisYapController" customModule="ortaklistnew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HqY-fH-9cy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JlR-7Y-KE7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jtd-Tg-Tyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3410" y="-2"/>
+        </scene>
+    </scenes>
+</document>

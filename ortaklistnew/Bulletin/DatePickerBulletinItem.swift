@@ -19,7 +19,11 @@ class DatePickerBLTNItem: BLTNPageItem {
      */
 
     override func makeViewsUnderDescription(with interfaceBuilder: BLTNInterfaceBuilder) -> [UIView]? {
+        let loc = Locale(identifier: "tr")
+        
         datePicker.datePickerMode = .date
+        datePicker.locale = loc
+        
         return [datePicker]
     }
 

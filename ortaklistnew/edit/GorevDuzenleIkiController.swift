@@ -10,7 +10,7 @@ import BLTNBoard
 import UITextView_Placeholder
 import M13Checkbox
 
-class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GorevDuzenleIkiController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -26,6 +26,7 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
     
     var uyebilgisijson = JSON()
     var listekisilerjson = JSON()
+    var gorevdetayjson = JSON()
     
     var secilenlisteid = String()
     var secilenlistebaslik = String()
@@ -34,8 +35,14 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
     var gorevdatabaslangic = String()
     var gorevdatabitis = String()
     
+    var secilengorevid = String()
+    
     var kisilercheckboxs = [M13Checkbox]()
     var gorevesecilenkisiler = [String]()
+    
+    var gorevedahaoncesecilenkisiler = [String]()
+    
+    var newsecilenkisiler = String()
     
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,7 +68,7 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
     var ustyazi = UILabel()
     var bildirimbtn = UIButton(type: .custom)
     
-    var gorevekleview = UIView()
+    var gorevduzenleview = UIView()
     var listekisilertable = UITableView()
     
     var gerigitbtn = UIButton()
@@ -90,8 +97,8 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
             ustyazi = UILabel(frame: CGRect(x:geribtn.frame.width,y:0,width:ustbaricgenel.frame.width - geribtn.frame.width*2,height:ustbaricgenel.frame.height))
             bildirimbtn = UIButton(frame: CGRect(x:ustbaricgenel.frame.width-30,y:10,width:30,height: 30))
             
-            gorevekleview = UIView(frame: CGRect(x:0,y:ustbar.frame.height,width: screenWidth,height:screenHeight-ustbar.frame.height))
-            listekisilertable = UITableView(frame: CGRect(x:0,y:0,width: gorevekleview.frame.width,height:gorevekleview.frame.height))
+            gorevduzenleview = UIView(frame: CGRect(x:0,y:ustbar.frame.height,width: screenWidth,height:screenHeight-ustbar.frame.height))
+            listekisilertable = UITableView(frame: CGRect(x:0,y:0,width: gorevduzenleview.frame.width,height:gorevduzenleview.frame.height))
             
             gerigitbtn = UIButton(frame: CGRect(x:25,y:screenHeight - 110,width:60,height:60))
             ilerigitbtn = UIButton(frame: CGRect(x:screenWidth - 85,y:screenHeight - 110,width:60,height:60))
@@ -141,10 +148,10 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
         
         //
         
-        gorevekleview.backgroundColor = UIColor.clear
-        gorevekleview.layer.zPosition = 9999
-        view.addSubview(gorevekleview)
-        view.bringSubviewToFront(gorevekleview)
+        gorevduzenleview.backgroundColor = UIColor.clear
+        gorevduzenleview.layer.zPosition = 9999
+        view.addSubview(gorevduzenleview)
+        view.bringSubviewToFront(gorevduzenleview)
         
         listekisilertable.delegate = self
         listekisilertable.dataSource = self
@@ -156,7 +163,7 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
         listekisilertable.showsVerticalScrollIndicator = false
         listekisilertable.showsHorizontalScrollIndicator = false
         listekisilertable.estimatedRowHeight = 60
-        gorevekleview.addSubview(listekisilertable)
+        gorevduzenleview.addSubview(listekisilertable)
         
         //
         
@@ -187,8 +194,30 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
         hud.layer.zPosition = 9999
         
         uyebilgisicek()
-        listekisicek()
+        gorevdetaycek()
         
+        
+    }
+    
+    func gorevdetaycek(){
+        let parameters: Parameters = [
+            "gorevid": "\(secilengorevid)"
+        ]
+        Alamofire.request(serviceurl + "gorev_detay.php", method: .post, parameters: parameters).responseJSON { response in
+            if let value = response.result.value {
+                self.gorevdetayjson = JSON(value)
+                print("gorevdetayjson  qnq: \(self.gorevdetayjson)")
+                
+                let secilmis_uyeler = self.gorevdetayjson["secilmis_uyeler"].arrayValue
+                
+                for i in 0..<secilmis_uyeler.count{
+                    let eposta = secilmis_uyeler[i]["eposta"].stringValue
+                    self.gorevedahaoncesecilenkisiler.append(eposta)
+                }
+                
+            }
+        }
+        listekisicek()
     }
     
     deinit {
@@ -225,7 +254,7 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
     
     @objc func ilerigitbtnfunc(sender:UIButton!){
         
-        gorevolusturfunc()
+        gorevduzenlefunc()
         
     }
     
@@ -252,8 +281,17 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
         let satir = indexPath.row
         
         let isim = "\(self.listekisilerjson["list_uyeleri"][satir]["isim"].stringValue)"
+        let eposta = "\(self.listekisilerjson["list_uyeleri"][satir]["eposta"].stringValue)"
         
         cell.kisilerbaslik.text = "\(isim)"
+        
+        if gorevedahaoncesecilenkisiler.contains(eposta) {
+            cell.kisilercheck.checkState = .checked
+            gorevesecilenkisiler[satir] = eposta
+        }else{
+            cell.kisilercheck.checkState = .unchecked
+            gorevesecilenkisiler[satir] = "eposta"
+        }
         
         kisilercheckboxs.append(cell.kisilercheck)
         
@@ -261,7 +299,6 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
         cell.kisilercheck.addTarget(self, action: #selector(kisilercheckfunc), for: UIControl.Event.valueChanged)
         
         return cell
-        
     }
     
     @objc func kisilercheckfunc(sender:M13Checkbox!){
@@ -272,54 +309,50 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
         let secilenuyeeposta = "\(self.listekisilerjson["list_uyeleri"][satir]["eposta"].stringValue)"
         
         if(checkdurum == "unchecked"){
-            gorevesecilenkisiler[satir] = "eposta3"
+            gorevesecilenkisiler[satir] = "eposta"
         }else if(checkdurum == "checked"){
-            gorevesecilenkisiler[satir] = secilenuyeeposta
-        }
-        
-        print("Göreve Seçilen Kişiler: \(gorevesecilenkisiler)")
-        
-    }
-    
-    func gorevolusturfunc(){
-        var newsecilenkisiler = ""
-        
-        for i in 0..<gorevesecilenkisiler.count{
-            let eposta = gorevesecilenkisiler[i]
-            if(eposta == "eposta"){
-                gorevesecilenkisiler.remove(at: i)
-            }else if(eposta != "eposta"){
-               newsecilenkisiler = "\(newsecilenkisiler + eposta),"
+            if(gorevesecilenkisiler.contains(secilenuyeeposta)){
+                //bu üye var
+            }else{
+                gorevesecilenkisiler[satir] = secilenuyeeposta
             }
         }
         
+    }
+    
+    func gorevduzenlefunc(){
+        gorevkisitemizle()
         let uyeid = self.uye_data.string(forKey: "uyeid")
         let parameters: Parameters = [
             "uyeid": "\(uyeid!)",
-            "listeid": "\(secilenlisteid)",
+            "gorevid": "\(secilengorevid)",
             "baslik": "\(gorevdataaciklama)",
             "detay": "\(gorevdataaciklama)",
             "baslangic": "\(gorevdatabaslangic)",
             "sonbulma": "\(gorevdatabitis)",
             "secilenuyeler": "\(newsecilenkisiler)"
         ]
-        Alamofire.request(serviceurl + "yeni_gorev_ekle.php", method: .post, parameters: parameters).responseJSON { response in
+        Alamofire.request(serviceurl + "gorevi_duzenle.php", method: .post, parameters: parameters).responseJSON { response in
             if let value = response.result.value {
-                let gorevolusturjson = JSON(value)
-                print("gorevolusturjson qnq: \(gorevolusturjson)")
+                let gorevguncellejson = JSON(value)
+                print("gorevguncellejson qnq: \(gorevguncellejson)")
                 
             }
-            let basarilibildirim = Banner(title: "Tebrikler!", subtitle: "Başarıyla yeni görev oluşturdunuz.", image: UIImage(named: "bildirimbeyaz.png"), backgroundColor: UIColor("#27ae60"))
-            basarilibildirim.dismissesOnTap = true
-            basarilibildirim.show(duration: 3.0)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                let sayfagecis = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gorevlerVC") as! GorevlerController
-                sayfagecis.secilenlisteid = self.secilenlisteid
-                sayfagecis.secilenlistebaslik = self.secilenlistebaslik
-                self.present(sayfagecis, animated: false, completion: nil)
+        }
+        let basarilibildirim = Banner(title: "Tebrikler!", subtitle: "Görevi başarıyla düzenlediniz.", image: UIImage(named: "bildirimbeyaz.png"), backgroundColor: UIColor("#27ae60"))
+        basarilibildirim.dismissesOnTap = true
+        basarilibildirim.show(duration: 3.0)
+        
+        gerisayfagit()
+    }
+    
+    func gorevkisitemizle(){
+        let secilenkisileruzunluk = gorevesecilenkisiler.count
+        for i in 0..<secilenkisileruzunluk{
+            let eposta = "\(gorevesecilenkisiler[i])"
+            if(eposta != "eposta"){
+                newsecilenkisiler = "\(newsecilenkisiler + eposta),"
             }
-            
         }
     }
     
@@ -379,6 +412,10 @@ class GorevEkleIkiController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func gerigitfunc(sender:UIButton!){
+        gerisayfagit()
+    }
+    
+    func gerisayfagit(){
         let sayfagecis = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gorevlerVC") as! GorevlerController
         sayfagecis.secilenlisteid = secilenlisteid
         sayfagecis.secilenlistebaslik = secilenlistebaslik

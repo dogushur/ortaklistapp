@@ -204,7 +204,10 @@ class GorevlerController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func plusbtnfunc(sender:UIButton!){
-        //plus
+        let sayfagecis = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gorevEkleBirVC") as! GorevEkleBirController
+        sayfagecis.secilenlisteid = secilenlisteid
+        sayfagecis.secilenlistebaslik = secilenlistebaslik
+        self.present(sayfagecis, animated: false, completion: nil)
     }
     
     func uyebilgisicek(){
@@ -343,6 +346,8 @@ class GorevlerController: UIViewController, UITableViewDelegate, UITableViewData
             //modifyActioni.image = UIImage(named: "plusbuton")
             modifyActioni.backgroundColor = UIColor("#0984e3")
             
+            
+            
             return UISwipeActionsConfiguration(actions: [modifyAction,modifyActioni])
         }else{
             let modifyActioni = UIContextualAction(style: .normal, title:  "Çık", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
@@ -356,11 +361,17 @@ class GorevlerController: UIViewController, UITableViewDelegate, UITableViewData
             
             return UISwipeActionsConfiguration(actions: [modifyActioni])
         }
-
+        
     }
     
     func goreviduzenle(s: Int){
-        //
+        let secilengorevid = self.gorevlerjson[s]["gorevid"].stringValue
+        
+        let sayfagecis = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gorevDuzenleBirVC") as! GorevDuzenleBirController
+        sayfagecis.secilenlisteid = secilenlisteid
+        sayfagecis.secilenlistebaslik = secilenlistebaslik
+        sayfagecis.secilengorevid = secilengorevid
+        self.present(sayfagecis, animated: false, completion: nil)
     }
     
     func gorevisil(s: Int){

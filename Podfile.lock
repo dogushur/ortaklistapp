@@ -1,0 +1,81 @@
+PODS:
+  - Alamofire (4.8.2)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
+  - BRYXBanner (0.8.3)
+  - BulletinBoard (3.0.0)
+  - D2PDatePicker (0.1.4)
+  - DeviceKit (1.13.0)
+  - FontAwesome.swift (1.7.0)
+  - JGProgressHUD (2.0.3)
+  - M13Checkbox (3.4.0)
+  - paper-onboarding (6.1.3)
+  - PureLayout (3.1.4)
+  - RevealingSplashView (0.6.0)
+  - SCLAlertView (0.8)
+  - SwiftyJSON (4.3.0)
+  - UIColor_Hex_Swift (4.2.0)
+  - UIGradient (1.2.0)
+  - "UITextView+Placeholder (1.2.1)"
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireImage (~> 3.4)
+  - BRYXBanner
+  - BulletinBoard
+  - D2PDatePicker
+  - DeviceKit (~> 1.3)
+  - FontAwesome.swift
+  - JGProgressHUD
+  - M13Checkbox
+  - paper-onboarding
+  - PureLayout
+  - RevealingSplashView
+  - SCLAlertView
+  - SwiftyJSON (~> 4.0)
+  - UIColor_Hex_Swift (~> 4.2.0)
+  - UIGradient (~> 1.2.0)
+  - "UITextView+Placeholder"
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - BRYXBanner
+    - BulletinBoard
+    - D2PDatePicker
+    - DeviceKit
+    - FontAwesome.swift
+    - JGProgressHUD
+    - M13Checkbox
+    - paper-onboarding
+    - PureLayout
+    - RevealingSplashView
+    - SCLAlertView
+    - SwiftyJSON
+    - UIColor_Hex_Swift
+    - UIGradient
+    - "UITextView+Placeholder"
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  BRYXBanner: 8cf1b119792e1cee8d7ba107297ef89f7409bc53
+  BulletinBoard: 927f4f9fd22503ceecd71bfc830fd65d5996593a
+  D2PDatePicker: e35a6b3dd5fac16de8a17606dc0bb285e8b1a875
+  DeviceKit: 5a4accdb2918ce0b69e62dc3bef6e4d2cc06e2e4
+  FontAwesome.swift: 9f377615aa61381796dca143cddfd2a388723ea1
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  M13Checkbox: 6f59404540ac98ba83a3d1afac335895a40c6a5d
+  paper-onboarding: 47ded9ede6ae9dd7ec135dddd8bd3e170b79d799
+  PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
+  RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  UIColor_Hex_Swift: bc07fc197421ee896b9ed6dcfa2054b7fbf75145
+  UIGradient: 48439bb1662c937b9a3d8b954712d0db5096372e
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+
+PODFILE CHECKSUM: 9234b48548540f7c1ce87714b92cdb71d27d295c
+
+COCOAPODS: 1.6.1
